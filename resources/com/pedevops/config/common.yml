@@ -1,0 +1,4 @@
+common:
+  debug: false
+  github:
+    credential: github-credential

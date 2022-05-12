@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-slave
+  annotations:
+    sidecar.istio.io/inject: "false"
+spec:
+  serviceAccountName: jenkins
+  containers:
+    - name: jnlp
+      image: northamerica-northeast2-docker.pkg.dev/nbrna-0109-anthosperu-cfc55dcf/pe-artifacts/ci/jenkins-agent:v1
+      imagePullPolicy: Always
+      args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
+      env:
+        - name: GIT_SSL_NO_VERIFY
+          value: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 256Mi
+        limits:
+          cpu: 100m
+          memory: 512Mi
+    - name: gradle
+      image: northamerica-northeast2-docker.pkg.dev/nbrna-0109-anthosperu-cfc55dcf/pe-artifacts/ci/gradle:jdk11-alpine
+      imagePullPolicy: Always
+      env:
+        - name: http_proxy
+          value: '\$(HTTP_PROXY_TEST)'
+        - name: https_proxy
+          value: '\$(HTTP_PROXY_TEST)'
+      command: ['cat']
+      tty: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 256Mi
+        limits:
+          memory: 1Gi
+          cpu: 512m
+      volumeMounts:
+        - name: jenkins-agent-vol
+          mountPath: /opt/java/openjdk/lib/security/cacerts
+          subPath: cacerts
+  volumes:
+    - name: jenkins-agent-vol
+      configMap:
+        name: jenkins-java-cacerts
