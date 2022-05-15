@@ -10,7 +10,7 @@ spec:
   serviceAccountName: pe-jenkins-jenkins
   containers:
     - name: jnlp
-      image: jenkins/agent:latest-jdk11
+      image: "jenkins/agent:latest-jdk11"
       imagePullPolicy: Always
       args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
       env:
