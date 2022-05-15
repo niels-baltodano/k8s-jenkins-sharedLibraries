@@ -10,7 +10,7 @@ spec:
   serviceAccountName: pe-jenkins-jenkins
   containers:
     - name: jnlp
-      image: northamerica-northeast2-docker.pkg.dev/nbrna-0109-anthosperu-cfc55dcf/pe-artifacts/ci/jenkins-agent:v1
+      image: jenkins/pe-jenkins-jenkins-agent
       imagePullPolicy: Always
       args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
       env:
@@ -23,8 +23,8 @@ spec:
         limits:
             cpu: 512m
             memory: 4Gi
-    - name: gradle
-      image: northamerica-northeast2-docker.pkg.dev/nbrna-0109-anthosperu-cfc55dcf/pe-artifacts/ci/gradle-maven:jdk11-alpine
+    - name: maven
+      image: maven:3.8.5-openjdk-8-slim
       imagePullPolicy: Always
       command: ['cat']
       tty: true
@@ -39,7 +39,7 @@ spec:
       securityContext:
         runAsUser: 0
     - name: node
-      image: northamerica-northeast2-docker.pkg.dev/nbrna-0109-anthosperu-cfc55dcf/pe-artifacts/ci/node:14-alpine
+      image: node:lts-stretch-slim
       imagePullPolicy: Always   
       command: ['cat']
       tty: true
