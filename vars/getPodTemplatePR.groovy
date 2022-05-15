@@ -4,8 +4,6 @@ apiVersion: v1
 kind: Pod
 metadata:
     name: jenkins-slave
-    annotations:
-        sidecar.istio.io/inject: "false"
 spec:
   serviceAccountName: pe-jenkins-jenkins
   containers:
