@@ -8,7 +8,7 @@ spec:
   serviceAccountName: pe-jenkins-jenkins
   containers:
     - name: jnlp
-      image: "niels58/jenkins-agent:jdk11"
+      image: jenkins/inbound-agent:4.11.2-4
       imagePullPolicy: Always
       args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
       env:
