@@ -1,12 +1,14 @@
 package com.pe.devops.repository
 
 import com.pe.devops.Script
+
 import com.pe.devops.library.Utils
+
 
 class ProjectDataRepository {
     static root = Script.root
     String pathProjectYaml
-    RawFileRepository rawFileRepository = new RawFileRepository()
+ //   RawFileRepository rawFileRepository = new RawFileRepository()
     LinkedHashMap ProjectInfo
     Utils util = new Utils()
 
@@ -21,7 +23,7 @@ class ProjectDataRepository {
             data = root.readYaml(file: this.pathProjectYaml)
         } else {
             // hace el curl
-            String fileName = this.rawFileRepository.getFile(this.pathProjectYaml)
+            //String fileName = this.rawFileRepository.getFile(this.pathProjectYaml)
             data = root.readYaml(file: fileName)
         }
         return data

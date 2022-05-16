@@ -2,6 +2,8 @@ package com.pe.devops.repository
 
 import com.pe.devops.library.CurlHttpClient
 
+import com.pe.devops.Script
+
 class RawFileRepository {
     static root = Script.root
     String server = "Defaults.BITBUCKET_SERVER"
