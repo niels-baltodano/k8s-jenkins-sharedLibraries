@@ -24,3 +24,8 @@ void build(String cmdBuild){
     UtilsRepository repository = new UtilsRepository()
     repository.build(cmdBuild)
 }
+void pushKaniko(String baseImage, String tagImage){
+    init()
+    UtilsRepository repository = new UtilsRepository()
+    repository.pushKaniko(baseImage, tagImage)
+}

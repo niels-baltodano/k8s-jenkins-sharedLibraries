@@ -39,4 +39,33 @@ class UtilsRepository {
         """)
         root.sh(label: "Maven build",script: "${cmdBuild}")
     }
+    void pushKaniko(String baseImage, String tagImage){
+        if (!baseImage) {
+            throw new Exception("🚩🚩🚩 🤨🤨🤨 BASE_IMAGE es null o vacia 🤨🤨🤨 🚩🚩🚩")
+        }
+        if (!tagImage) {
+            throw new Exception("🚩🚩🚩 🤨🤨🤨 VERSION_IMAGE es null o vacia 🤨🤨🤨 🚩🚩🚩")
+        }
+//        if (root.env.HTTP_PROXY_TEST) {
+//            kanikoArgs.put('http_proxy', root.env.HTTP_PROXY_TEST)
+//            kanikoArgs.put('https_proxy', root.env.HTTP_PROXY_TEST)
+//        }
+        def imageLabelPush = "${baseImage}:${tagImage}"
+        //${kanikoBuildArgs} \
+        String kanikoBuildArgs = kanikoArgs.collect { k, v -> "--build-arg '${k}=${v}'" }.join(' ')
+        def kanikoCmd = """
+                GOOGLE_APPLICATION_CREDENTIALS=/kaniko/.docker
+                /kaniko/executor --context . \
+                --dockerfile "./Dockerfile" \
+                --insecure \
+                --skip-tls-verify \
+                --destination "${imageLabelPush}"
+        """
+        root.println("""
+            🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
+            IMAGE: ${imageLabelPush}
+            🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
+        """)
+        root.sh(label: "Push --> ${imageLabelPush}", script: kanikoCmd)
+    }
 }

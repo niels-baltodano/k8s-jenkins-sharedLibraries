@@ -51,5 +51,31 @@ spec:
           ephemeral-storage: 4Gi
       securityContext:
         runAsUser: 0
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:debug
+      imagePullPolicy: Always   
+      command: ['cat']
+      tty: true
+      resources:
+        requests:
+          cpu: 200m
+          memory: 512Mi
+        limits:
+          memory: 15Gi
+          cpu: 2048m
+          ephemeral-storage: 25Gi
+      securityContext:
+        runAsUser: 0
+      volumeMounts:
+        - name: jenkins-docker-cfg
+          mountPath: /kaniko/.docker
+          readOnly: false
+  volumes:
+  - name: jenkins-docker-cfg                                 
+    secret:
+      secretName: pull-secret-docker-hub
+      items:
+      - key: .dockerconfigjson
+        path: config.json
 """
 }
