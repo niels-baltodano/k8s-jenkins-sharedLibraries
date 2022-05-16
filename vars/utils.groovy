@@ -34,8 +34,8 @@ void kubectlPatch(String pathManifest, String appName, String finalTag) {
     UtilsRepository utilsRepository = new UtilsRepository()
     utilsRepository.kubectlPatch(pathManifest, appName, finalTag)
 }
-void pushKubectlPatch(String appName, String environment, String fromBranch, String finalTag, String jiraTicket){
+void pushKubectlPatch(String appName, String fromBranch, String finalTag){
     init()
     UtilsRepository utilsRepository = new UtilsRepository()
-    utilsRepository.pushKubectlPatch(appName, environment, fromBranch, finalTag, jiraTicket)
+    utilsRepository.pushKubectlPatch(appName, fromBranch, finalTag)
 }
