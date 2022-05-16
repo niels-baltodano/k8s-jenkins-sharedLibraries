@@ -52,7 +52,7 @@ class UtilsRepository {
 //        }
         def imageLabelPush = "${baseImage}:${tagImage}"
         //${kanikoBuildArgs} \
-        String kanikoBuildArgs = kanikoArgs.collect { k, v -> "--build-arg '${k}=${v}'" }.join(' ')
+        //String kanikoBuildArgs = kanikoArgs.collect { k, v -> "--build-arg '${k}=${v}'" }.join(' ')
         def kanikoCmd = """
                 GOOGLE_APPLICATION_CREDENTIALS=/kaniko/.docker
                 /kaniko/executor --context . \
