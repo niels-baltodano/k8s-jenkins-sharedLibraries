@@ -61,9 +61,9 @@ spec:
           cpu: 200m
           memory: 512Mi
         limits:
-          memory: 15Gi
-          cpu: 2048m
-          ephemeral-storage: 25Gi
+          memory: 8Gi
+          cpu: 1024m
+          ephemeral-storage: 5Gi
       securityContext:
         runAsUser: 0
       volumeMounts:
