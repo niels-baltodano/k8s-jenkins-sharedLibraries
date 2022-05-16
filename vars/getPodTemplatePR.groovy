@@ -53,7 +53,9 @@ spec:
         runAsUser: 0
     - name: kaniko
       image: gcr.io/kaniko-project/executor:debug
-      imagePullPolicy: Always
+      imagePullPolicy: Always   
+      command: ['cat']
+      tty: true
       resources:
         requests:
           cpu: 200m
@@ -65,8 +67,8 @@ spec:
       securityContext:
         runAsUser: 0
       env:
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /secret/kaniko-secret.json
+       - name: GOOGLE_APPLICATION_CREDENTIALS
+         value: /secret/kaniko-secret.json
       volumeMounts:
         - name: kaniko-secret
           mountPath: /secret
