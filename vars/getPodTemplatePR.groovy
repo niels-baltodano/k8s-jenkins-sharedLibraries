@@ -22,7 +22,7 @@ spec:
             cpu: 512m
             memory: 4Gi
     - name: maven
-      image: maven:3.8.5-openjdk-8-slim
+      image: maven:3.8.5-openjdk-11-slim
       imagePullPolicy: Always
       command: ['cat']
       tty: true
