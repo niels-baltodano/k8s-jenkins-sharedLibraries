@@ -1,13 +1,11 @@
 package com.pe.devops.repository
 
-import com.pe.devops.Script
-import com.pe.devops.defaults.Defaults
 import com.pe.devops.library.CurlHttpClient
 
 class RawFileRepository {
     static root = Script.root
-    String server = Defaults.BITBUCKET_SERVER
-    String credential = Defaults.BITBUCKET_CREDENTIAL
+    String server = "Defaults.BITBUCKET_SERVER"
+    String credential = "Defaults.BITBUCKET_CREDENTIAL"
     CurlHttpClient client = new CurlHttpClient(server: this.server)
 
     void getFile(String branch, String path, String filename){
