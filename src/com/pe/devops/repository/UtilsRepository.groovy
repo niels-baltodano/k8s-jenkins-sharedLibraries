@@ -33,7 +33,7 @@ class UtilsRepository {
                        userRemoteConfigs: [[credentialsId: root.env.GIT_CREDENTIAL_ID, url: sshCloneUrl]]])
     }
 
-    void build() {
-        root.sh(label: "Maven build", script: "mvn clean package")
+    void build(String cmdBuild) {
+        root.sh(label: "Maven build", script: cmdBuild)
     }
 }
