@@ -17,7 +17,6 @@ class ProjectDataRepository {
     LinkedHashMap getDataYaml() {
         LinkedHashMap data = [:]
         String pathType = this.util.getProtocol(this.pathProjectYaml)
-        //path dentro del repo al hacer checkout
         if (pathType.equals('file')) {
             data = root.readYaml(file: this.pathProjectYaml)
         } else {
@@ -27,14 +26,13 @@ class ProjectDataRepository {
         }
         return data
     }
-    //frontend/node/affluent'
+
     LinkedHashMap getProjectInfo(String projectType, String projectTecType, String component) {
         this.ProjectInfo = getDataYaml()
         return this.ProjectInfo.get(projectType).get(projectTecType).get(component)
     }
+
     LinkedHashMap getDataMap() {
-        //SAST/blackduck/frontend/node/affluent'
-        //List jobDataSplit = root.env.JOB_NAME.trim().split('/')
         Map jobNameType = this.util.getJobNameType(root.env.JOB_NAME)
         String component = jobNameType.get('component')
         String projectTecType = jobNameType.get('projectTecType')

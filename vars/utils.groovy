@@ -1,6 +1,16 @@
 import com.pe.devops.repository.ProjectDataRepository
+import com.pe.devops.repository.UtilsRepository
 
-Map getProjectInfo(String urlPathYaml) {
-    ProjectDataRepository projectRepository = new ProjectDataRepository(urlPathYaml)
-    return projectRepository.getProjectInfo()
+
+//JOB_NAME
+Map getJobNameType() {
+    init()
+    UtilsRepository utilsRepository = new UtilsRepository()
+    return utilsRepository.getJobNameType()
+}
+
+Map getProjectInfo(String urlProjectYaml){
+    init()
+    ProjectDataRepository projectDataRepository = new ProjectDataRepository(urlProjectYaml)
+    return projectDataRepository.getDataMap()
 }
