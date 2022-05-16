@@ -23,6 +23,10 @@ class UtilsRepository {
         return this.util.getMembersSepByComa(members)
     }
     void fetchCode(String sshCloneUrl, String branch){
+        root.println("""
+        SSH_CLONE_URL :::: ${sshCloneUrl}
+        BRANCH ::::::::::: ${branch}
+        """)
         root.cleanWs()
         root.checkout([$class: 'GitSCM', branches: [[name: branch]], extensions: [],
                         userRemoteConfigs: [[credentialsId: root.env.GIT_CREDENTIAL_ID, url: sshCloneUrl]]])
