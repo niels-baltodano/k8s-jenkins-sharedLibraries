@@ -22,5 +22,5 @@ void fetchCode(String sshCloneUrl, String branch){
 void build(String cmdBuild){
     init()
     UtilsRepository repository = new UtilsRepository()
-    repository.build()
+    repository.build(cmdBuild)
 }
