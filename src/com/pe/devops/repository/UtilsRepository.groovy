@@ -124,7 +124,7 @@ class UtilsRepository {
                 git status --porcelain -s -b
                 git add .
                 git status --porcelain -s -b
-                git commit -am 'feat(${jiraTicket}): 🐳🐳🐳 Se actualiza ${appName}-deployment.yaml desde el pipeline ➡️➡️  ${root.env.BUILD_URL} 🐳🐳🐳'
+                git commit -am 'feat(DevOps-123): 🐳🐳🐳 Se actualiza ${appName}-deployment.yaml desde el pipeline ➡️➡️  ${root.env.BUILD_URL} 🐳🐳🐳'
                 git status --porcelain -s -b
             """
         def sshPushCmd = """
@@ -132,7 +132,7 @@ class UtilsRepository {
                 set -x
                 git push origin HEAD:${fromBranch}
            """
-        root.sh(label: "Se agrega el commit ${jiraTicket}", script: commitMsg)
+        root.sh(label: "Se agrega el commit DevOps-123", script: commitMsg)
         root.sshagent([this.credential]) {
             root.sh(label: "Push 🐳🐳🐳🐳 cambios en Deployment ${appName} --> ${pathManifest}", script: sshPushCmd)
         }
