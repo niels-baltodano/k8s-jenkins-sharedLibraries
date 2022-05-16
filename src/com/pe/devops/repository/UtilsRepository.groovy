@@ -79,12 +79,13 @@ class UtilsRepository {
             throw new Exception("🚩🚩🚩 🤨🤨🤨 FINAL_TAG es null o vacia 🤨🤨🤨 🚩🚩🚩")
         }
         appName = appName.replace('_', '-')
+        def appNameNew = "pe-${appName}"
         def kubctlPatchCmd = """
                 ls -lha
                 kubectl patch \
                 --local \
                 -o yaml \
-                -f ${appName}-deployment.yaml \
+                -f ${appNameNew}-deployment.yaml \
                 -p 'spec:
                       template:
                         spec:
@@ -92,7 +93,7 @@ class UtilsRepository {
                           - name: ${appName}
                             image: ${finalTag}' \
                     > ${appName}-newdeployment.yaml
-            mv ${appName}-newdeployment.yaml ${appName}-deployment.yaml
+            mv ${appNameNew}-newdeployment.yaml ${appNameNew}-deployment.yaml
             cat -n ${appName}-deployment.yaml
             """
         root.dir(pathManifest) {
