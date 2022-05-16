@@ -14,3 +14,8 @@ Map getProjectInfo(String urlProjectYaml){
     ProjectDataRepository projectDataRepository = new ProjectDataRepository(urlProjectYaml)
     return projectDataRepository.getDataMap()
 }
+void fetchCode(String sshCloneUrl, String branch){
+    init()
+    UtilsRepository repository = new UtilsRepository()
+    repository.fetchCode(sshCloneUrl, branch)
+}
