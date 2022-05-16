@@ -34,6 +34,9 @@ class UtilsRepository {
     }
 
     void build(String cmdBuild) {
-        root.sh(label: "Maven build", script: cmdBuild)
+        root.println("""
+        BUILD :::: ${cmdBuild}
+        """)
+        root.sh(label: "Maven build",script: "${cmdBuild}")
     }
 }
