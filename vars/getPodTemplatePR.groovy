@@ -68,13 +68,17 @@ spec:
         runAsUser: 0
       env:
        - name: GOOGLE_APPLICATION_CREDENTIALS
-         value: /secret/kaniko-secret.json
+         value: /kaniko/.docker
       volumeMounts:
         - name: kaniko-secret
-          mountPath: /secret
+          mountPath: /kaniko/.docker
+          readOnly: false
   volumes:
   - name: kaniko-secret                                 
     secret:
       secretName: pull-secret-docker-hub
+      items:
+      - key: .dockerconfigjson
+        path: config.json
 """
 }
