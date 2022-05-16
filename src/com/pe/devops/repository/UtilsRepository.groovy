@@ -54,7 +54,6 @@ class UtilsRepository {
         //${kanikoBuildArgs} \
         //String kanikoBuildArgs = kanikoArgs.collect { k, v -> "--build-arg '${k}=${v}'" }.join(' ')
         def kanikoCmd = """
-                GOOGLE_APPLICATION_CREDENTIALS=/kaniko/.docker
                 /kaniko/executor --context . \
                 --dockerfile "./Dockerfile" \
                 --insecure \

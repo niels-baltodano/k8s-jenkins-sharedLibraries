@@ -52,7 +52,7 @@ spec:
       securityContext:
         runAsUser: 0
     - name: kaniko
-      image: gcr.io/kaniko-project/executor:debug
+      image: gcr.io/kaniko-project/executor:latest
       imagePullPolicy: Always   
       command: ['cat']
       tty: true
@@ -66,16 +66,15 @@ spec:
           ephemeral-storage: 5Gi
       securityContext:
         runAsUser: 0
+      env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /secret/kaniko-secret.json
       volumeMounts:
-        - name: jenkins-docker-cfg
-          mountPath: /kaniko/.docker
-          readOnly: false
+        - name: kaniko-secret
+          mountPath: /secret
   volumes:
-  - name: jenkins-docker-cfg                                 
+  - name: kaniko-secret                                 
     secret:
       secretName: pull-secret-docker-hub
-      items:
-      - key: .dockerconfigjson
-        path: config.json
 """
 }
