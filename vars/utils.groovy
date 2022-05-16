@@ -29,3 +29,13 @@ void pushKaniko(String baseImage, String tagImage){
     UtilsRepository repository = new UtilsRepository()
     repository.pushKaniko(baseImage, tagImage)
 }
+void kubectlPatch(String pathManifest, String appName, String finalTag) {
+    init()
+    UtilsRepository utilsRepository = new UtilsRepository()
+    utilsRepository.kubectlPatch(pathManifest, appName, finalTag)
+}
+void pushKubectlPatch(String appName, String environment, String fromBranch, String finalTag, String jiraTicket){
+    init()
+    UtilsRepository utilsRepository = new UtilsRepository()
+    utilsRepository.pushKubectlPatch(appName, environment, fromBranch, finalTag, jiraTicket)
+}
