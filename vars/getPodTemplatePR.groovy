@@ -33,7 +33,7 @@ spec:
         limits:
           memory: 1Gi
           cpu: 1024m
-          ephemeral-storage: 2Gi
+          ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
     - name: node
@@ -46,9 +46,9 @@ spec:
           cpu: 100m
           memory: 256Mi
         limits:
-          memory: 8Gi
+          memory: 1Gi
           cpu: 1024m
-          ephemeral-storage: 4Gi
+          ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
     - name: kaniko
