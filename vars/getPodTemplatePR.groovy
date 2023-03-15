@@ -1,7 +1,5 @@
 def call() {
 """
-apiVersion: v1
-kind: Pod
 metadata:
   namespace: default
   labels:
