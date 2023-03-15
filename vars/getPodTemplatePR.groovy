@@ -8,7 +8,7 @@ spec:
   serviceAccountName: myjenkins
   containers:
     - name: jnlp
-      image: jenkins/inbound-agent:4.11.2-4
+      image: jenkins/inbound-agent
       imagePullPolicy: Always
       args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
       env:
@@ -32,7 +32,7 @@ spec:
           memory: 512Mi
         limits:
           memory: 1Gi
-          cpu: 1024m
+          cpu: 512m
           ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
@@ -47,7 +47,7 @@ spec:
           memory: 256Mi
         limits:
           memory: 1Gi
-          cpu: 1024m
+          cpu: 512m
           ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
@@ -62,7 +62,7 @@ spec:
           memory: 512Mi
         limits:
           memory: 1Gi
-          cpu: 1024m
+          cpu: 512m
           ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
