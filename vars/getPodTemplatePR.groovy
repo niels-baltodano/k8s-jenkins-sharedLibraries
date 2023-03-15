@@ -3,7 +3,7 @@ def call() {
 apiVersion: v1
 kind: Pod
 metadata:
-    name: jenkins-slave
+    name: jenkins-slave-1
 spec:
   serviceAccountName: myjenkins
   containers:
