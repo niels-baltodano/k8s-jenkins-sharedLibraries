@@ -20,7 +20,7 @@ spec:
             memory: 256Mi
         limits:
             cpu: 512m
-            memory: 4Gi
+            memory: 1Gi
     - name: maven
       image: maven:3.8.5-openjdk-11-slim
       imagePullPolicy: Always
@@ -31,7 +31,7 @@ spec:
           cpu: 512m
           memory: 512Mi
         limits:
-          memory: 6Gi
+          memory: 1Gi
           cpu: 1024m
           ephemeral-storage: 2Gi
       securityContext:
@@ -61,9 +61,9 @@ spec:
           cpu: 200m
           memory: 512Mi
         limits:
-          memory: 8Gi
+          memory: 1Gi
           cpu: 1024m
-          ephemeral-storage: 5Gi
+          ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
       env:
