@@ -5,7 +5,7 @@ kind: Pod
 metadata:
     name: jenkins-slave
 spec:
-  serviceAccountName: pe-jenkins-jenkins
+  serviceAccountName: myjenkins
   containers:
     - name: jnlp
       image: jenkins/inbound-agent:4.11.2-4
