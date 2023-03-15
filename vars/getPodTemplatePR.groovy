@@ -3,13 +3,14 @@ def call() {
 apiVersion: v1
 kind: Pod
 metadata:
-    labels:
-        name: jenkins-slave-1
+  labels:
+    app: jenkins
+    name: jenkins-slave
 spec:
   serviceAccountName: myjenkins
   containers:
     - name: jnlp
-      image: jenkins/inbound-agent
+      image: jenkins/inbound-agent:4.11.2-4
       imagePullPolicy: Always
       args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
       env:
@@ -33,7 +34,7 @@ spec:
           memory: 512Mi
         limits:
           memory: 1Gi
-          cpu: 512m
+          cpu: 1024m
           ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
@@ -48,7 +49,7 @@ spec:
           memory: 256Mi
         limits:
           memory: 1Gi
-          cpu: 512m
+          cpu: 1024m
           ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
@@ -63,7 +64,7 @@ spec:
           memory: 512Mi
         limits:
           memory: 1Gi
-          cpu: 512m
+          cpu: 1024m
           ephemeral-storage: 1Gi
       securityContext:
         runAsUser: 0
