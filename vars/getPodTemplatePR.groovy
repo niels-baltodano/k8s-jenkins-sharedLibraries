@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: jnlp
-    image: jenkins/inbound-agent:4.11.2-4
+    image: 'jenkins/inbound-agent'
     imagePullPolicy: Always
     args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
     env:
@@ -22,7 +22,7 @@ spec:
           cpu: 512m
           memory: 1Gi
   - name: maven
-    image: maven:3.8.5-openjdk-11-slim
+    image: 'maven:3.8.5-openjdk-11-slim'
     imagePullPolicy: Always
     command: ['cat']
     tty: true
@@ -37,7 +37,7 @@ spec:
     securityContext:
         runAsUser: 0
   - name: node
-    image: node:lts-stretch-slim
+    image: 'node:lts-stretch-slim'
     imagePullPolicy: Always   
     command: ['cat']
     tty: true
