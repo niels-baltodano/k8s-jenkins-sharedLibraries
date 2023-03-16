@@ -1,11 +1,13 @@
 def call() {
 """
+apiVersion: v1
+kind: Pod
 metadata:
   namespace: default
   labels:
     app: jenkins-agent
 spec:
-  serviceAccountName: myjenkins
+  serviceAccountName: jenkins-local
   containers:
     - name: jnlp
       image: jenkins/inbound-agent:4.11.2-4
