@@ -5,7 +5,6 @@ kind: Pod
 metadata:
     name: jenkins-slave
 spec:
-  serviceAccountName: pe-jenkins-jenkins
   containers:
     - name: jnlp
       image: jenkins/inbound-agent:4.11.2-4
@@ -20,7 +19,7 @@ spec:
             memory: 256Mi
         limits:
             cpu: 512m
-            memory: 4Gi
+            memory: 1Gi
     - name: kubectl
       image: bitnami/kubectl:1.21.12-debian-10-r25
       imagePullPolicy: Always
